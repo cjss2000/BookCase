@@ -1,0 +1,147 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package junkrun;
+
+/**
+ *
+ * @author cjss2
+ */
+public class Book {
+    
+    private String author;
+    private int pageCount;
+    private String title;
+    private Boolean isEdited;
+    
+    public Book(){
+        
+    }
+    
+    
+    public Book(String author, int pageCount, String title){
+        this.author = author; 
+        this.pageCount = pageCount; 
+        this.title = title; 
+    }
+    
+    public Boolean getIsEdited(){
+        return isEdited;
+    }
+    
+    public void setIsEdited(Boolean isEdited){
+        this.isEdited = isEdited; 
+    }
+    
+    
+    public String getAuthor(){
+        return author;
+    }
+    
+    public int getPageCount(){
+        return pageCount;
+    }
+    
+    public String getTitle(){
+        return title; 
+    }
+    
+    public void setTitle(String title){
+        this.title = title; 
+    }
+    
+    public void setPageCount(int pageCount){
+        if (pageCount < 0){
+            System.out.println("Not a valid number");
+                    this.pageCount = 0;
+        } else
+        this.pageCount = pageCount; 
+    }
+    
+    public void setAuthor(String author){
+        this.author = author;
+    }
+//    public book(String author, int pageCount, String title){
+//        this.author = author; 
+//        this.pageCount = pageCount;
+//        this.title = title;
+//    }
+  
+    public String throwBook(){
+        String bang = "bang";
+        String thump = "thump";
+        String thud = "thud";
+        
+        return (this.title + " " + bang + " " + thump + " " + thud);
+                
+                
+    }
+    
+    public void isChildrensBook(){
+        if (this.pageCount < 25){
+            System.out.println("this is a children's book because it has " + this.pageCount + " pages");
+        }
+        else System.out.println("this is not a book for children because it has " + this.pageCount + " pages");
+        //return pageCount; 
+    }
+    
+    public String coAuthor(String coAuthor){
+       
+      
+       String newAuthor = coAuthor + " co authored with  " + author;   
+       
+     // String Author = this.book.setAuthor(newAuthor);
+       return newAuthor; 
+       
+    }
+    
+    public void setCoAuthor(String coAuthor){
+        String newAuthor = coAuthor + " worked with" + this.author;
+        
+        this.setAuthor(newAuthor);
+    }
+    
+    public void bookInfo(){
+        System.out.println("Book info:  " + author + " "  + title + " " + pageCount);
+    }
+    
+    public void addEditorPage(String addEditor){
+        String newAuthor = addEditor + this.author;  
+        int newPageCount = this.pageCount + 1; 
+        
+        this.setAuthor(newAuthor);
+        this.setPageCount(newPageCount);
+        this.setIsEdited(true);
+    }
+            
+    public String editorNotes(){
+        String editorNotes = "This book was worked on by  " + this.getAuthor() + " and is called " + this.getTitle() + " with " + this.getPageCount() + " pages";
+        String editFindings = null;
+        if ((this.getIsEdited() == true)){
+           editFindings = " This book has been edited and has 1 addtional page";
+        }
+        else{
+            editFindings = " This work has not been edited";
+        }
+        editorNotes = (editorNotes + editFindings); 
+        return editorNotes;
+    }
+    
+    public int pageComparer(Book book){
+        int pageDiff = 0;
+        if (this.getPageCount() > book.getPageCount()){
+            pageDiff = this.getPageCount() - book.getPageCount();
+            System.out.println(book.getTitle() +  " is larger by " + pageDiff + " pages");
+        } else {
+            System.out.println(book.getTitle() + " is larger by " + pageDiff + " pages");
+            pageDiff = book.getPageCount() - this.getPageCount();
+        }
+        return pageDiff; 
+    }
+//    @Override
+//    public String toString(){
+//        return this.author + this.title;
+//     }
+}
